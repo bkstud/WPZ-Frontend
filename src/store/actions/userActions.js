@@ -5,9 +5,9 @@ import {
   USER_SIGNOUT,
 } from "../../constants/userConstants";
 import http from "../../lib/axios";
-import auth from "../../auth";
+import auth from "../../utils/auth";
 
-export const signIn = (username, password) => async (dispatc) => {
+export const signIn = (username, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { username, password } });
   try {
     const user = await http.post("/login", {
@@ -29,7 +29,7 @@ export const signIn = (username, password) => async (dispatc) => {
   }
 };
 
-export const signOut = () => (dispatch: any) => {
+export const signOut = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_SIGNOUT });
   auth.logout();
