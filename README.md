@@ -5,19 +5,19 @@
 - Clone the repository
 
 ```
-  git clone https://github.com/bkstud/WPZ-Frontend.git
+git clone https://github.com/bkstud/WPZ-Frontend.git
 ```
 
 - Install dependencies
 
 ```
-  npm install
+npm install
 ```
 
 - Run project
 
 ```
-    npm start
+npm start
 ```
 
 ### To run Prettier
