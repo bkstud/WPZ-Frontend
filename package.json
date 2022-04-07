@@ -16,6 +16,9 @@
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -42,6 +45,8 @@
   },
   "devDependencies": {
     "@redux-devtools/core": "^3.11.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "prettier": "2.6.2"
   }
 }
