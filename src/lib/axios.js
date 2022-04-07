@@ -6,12 +6,12 @@ const http = axios.create({
     "Content-Type": "application/json",
   },
   transformRequest: [
-    data => {
+    (data) => {
       return JSON.stringify(data);
     },
   ],
   transformResponse: [
-    data => {
+    (data) => {
       return JSON.parse(data);
     },
   ],
