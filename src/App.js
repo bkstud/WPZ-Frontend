@@ -38,8 +38,3 @@ const App = () => {
 };
 
 export default App;
-
-//
-//
-  //
-  // <AdminRoute exact path="/adminTemp" component={AdminTemp} />
