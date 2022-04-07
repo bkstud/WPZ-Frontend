@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "", // Here will be link to backend
+  baseURL: "", // Here will be the link to backend
   headers: {
     "Content-Type": "application/json",
   },
