@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import ProtectedRoute from "./shared/ProtectedRoute";
+import AdminRoute from "./shared/AdminRoute";
+import HomeScreen from "./screens/HomeScreen";
+import Temp from "./screens/Temp";
+import ProtectedTemp from "./screens/ProtectedTemp";
+import AdminTemp from "./screens/AdminTemp";
+import ErrorScreen from "./screens/ErrorScreen";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<HomeScreen />} />
+        <Route path="/temp" element={<Temp />} />
+        <Route
+          path="/protectedTemp"
+          element={
+            <ProtectedRoute>
+              <ProtectedTemp />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/adminTemp"
+          element={
+            <AdminRoute>
+              <AdminTemp />
+            </AdminRoute>
+          }
+        />
+        <Route path="*" element={<ErrorScreen />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
