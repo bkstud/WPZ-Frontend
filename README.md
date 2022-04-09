@@ -29,3 +29,9 @@ npx prettier --write .
 ### Project is running on:
 
 http://localhost:3000/
+
+### To start project as container:
+From project root run:
+```
+docker run --network host -it -v $(pwd):/app bkstud/wpzfrontend:latest
+```
