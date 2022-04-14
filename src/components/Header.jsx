@@ -25,9 +25,24 @@ const Header = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/about">FAQ</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" id="login_profile" to={isLoggedin ? "/profile" : "/login"}>{isLoggedin ? "Profile" : "Login"}</NavLink>
-                        </li>
+                        {isLoggedin ?
+                        <React.Fragment>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" id="login_profile" to="/profile">Profil</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" id="login_profile" to="/logout">Wyloguj</NavLink>
+                            </li>
+                        </React.Fragment> :
+                        <React.Fragment>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" id="login_profile" to="/login">Zaloguj</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" id="login_profile" to="/signin">Zarejestruj</NavLink>
+                            </li>
+                        </React.Fragment>
+                        }
                     </ul>
                     <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
