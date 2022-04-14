@@ -8,10 +8,14 @@ import Temp from "./screens/Temp";
 import ProtectedTemp from "./screens/ProtectedTemp";
 import AdminTemp from "./screens/AdminTemp";
 import ErrorScreen from "./screens/ErrorScreen";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Header>
+      </Header>
       <Routes>
         <Route exact path="/" element={<HomeScreen />} />
         <Route path="/temp" element={<Temp />} />
@@ -33,6 +37,7 @@ const App = () => {
         />
         <Route path="*" element={<ErrorScreen />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
