@@ -1,57 +1,95 @@
+import { AppBar, Toolbar, Button, Typography, Grid, Link } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterLink } from "react-router-dom";
+
+const headersData = isLoggedin => [
+  {
+    label: "Strona Główna",
+    href: "/",
+  },
+  {
+    label: "Egzaminy",
+    href: "/tests",
+  },
+  {
+    label: "FAQ",
+    href: "/about",
+  },
+  {
+    label: isLoggedin ? "Profil" : "Zaloguj",
+    href: isLoggedin ? "/profile" : "/login",
+  },
+  {
+    label: isLoggedin ? "Wyloguj" : "Zarejestruj",
+    href: isLoggedin ? "/logout" : "/signin",
+  },
+];
 
 const Header = () => {
-    const isLoggedin = useSelector(state => state.userSignIn.userInfo !== null)
+  const isLoggedin = useSelector(state => state.userSignIn.userInfo !== null);
 
+  const displayDesktop = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <NavLink className="nav-link" to="/">
-                    <img src={"test.svg"} alt="logo" width="30" height="30" />
-                </NavLink>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Strona Główna</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/tests">Egzaminy</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/about">FAQ</NavLink>
-                        </li>
-                        {isLoggedin ?
-                        <React.Fragment>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" id="login_profile" to="/profile">Profil</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" id="login_profile" to="/logout">Wyloguj</NavLink>
-                            </li>
-                        </React.Fragment> :
-                        <React.Fragment>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" id="login_profile" to="/login">Zaloguj</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" id="login_profile" to="/signin">Zarejestruj</NavLink>
-                            </li>
-                        </React.Fragment>
-                        }
-                    </ul>
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    )
-}
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+        }}
+      >
+        {wpzlogo}
+        <div>{getMenuButtons()}</div>
+      </Toolbar>
+    );
+  };
 
-export default Header
+  const wpzlogo = (
+    <Link
+      {...{
+        color: "inherit",
+        component: RouterLink,
+        to: "/",
+        underline: "none",
+      }}
+    >
+      <Grid container direction="row" justifyContent="flex-start" alignItems="center">
+        <img src={"test.svg"} alt="logo" width="30" height="30" />
+        <Typography sx={{ display: "inline" }}>WPZ-Egzaminy</Typography>
+      </Grid>
+    </Link>
+  );
+
+  const getMenuButtons = () => {
+    return headersData(isLoggedin).map(({ label, href }) => {
+      return (
+        <Button
+          {...{
+            key: label,
+            color: "inherit",
+            to: href,
+            component: RouterLink,
+          }}
+        >
+          {label}
+        </Button>
+      );
+    });
+  };
+
+  return (
+    <header>
+      <AppBar
+        sx={{
+          position: "relative",
+          color: "black",
+          backgroundColor: theme =>
+            theme.palette.mode === "light" ? theme.palette.grey[200] : theme.palette.grey[800],
+        }}
+      >
+        {displayDesktop()}
+      </AppBar>
+    </header>
+  );
+};
+
+export default Header;

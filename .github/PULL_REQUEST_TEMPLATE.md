@@ -7,11 +7,13 @@ Task [number]
 Simple description of the pull request
 
 **Content**
+
 - [x] Component
 - [x] Component tests
 - [ ] Refactor the code
 
 **Is the feature tested?**
+
 - [ ] Yes
 - [x] Not yet
 - [ ] Nothing to test
