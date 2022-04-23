@@ -22,7 +22,7 @@ const headersData = isLoggedin => [
   },
   {
     label: isLoggedin ? "Wyloguj" : "Zarejestruj",
-    href: isLoggedin ? "/logout" : "/signin",
+    href: isLoggedin ? "/logout" : "/register",
   },
 ];
 

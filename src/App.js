@@ -11,6 +11,8 @@ import AdminTemp from "./screens/AdminTemp";
 import ErrorScreen from "./screens/ErrorScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<HomeScreen />} />
           <Route path="/temp" element={<Temp />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
           <Route
             path="/protectedTemp"
             element={
