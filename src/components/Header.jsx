@@ -1,5 +1,5 @@
-import { AppBar, Toolbar, Button, Typography, Grid, Link } from "@mui/material";
 import React from "react";
+import { AppBar, Toolbar, Button, Typography, Grid, Link } from "@mui/material";
 import { useSelector } from "react-redux";
 import { NavLink as RouterLink } from "react-router-dom";
 
@@ -35,8 +35,7 @@ const Header = () => {
         sx={{
           display: "flex",
           justifyContent: "space-around",
-        }}
-      >
+        }}>
         {wpzlogo}
         <div>{getMenuButtons()}</div>
       </Toolbar>
@@ -50,8 +49,7 @@ const Header = () => {
         component: RouterLink,
         to: "/",
         underline: "none",
-      }}
-    >
+      }}>
       <Grid container direction="row" justifyContent="flex-start" alignItems="center">
         <img src={"test.svg"} alt="logo" width="30" height="30" />
         <Typography sx={{ display: "inline" }}>WPZ-Egzaminy</Typography>
@@ -68,8 +66,7 @@ const Header = () => {
             color: "inherit",
             to: href,
             component: RouterLink,
-          }}
-        >
+          }}>
           {label}
         </Button>
       );
@@ -84,8 +81,7 @@ const Header = () => {
           color: "black",
           backgroundColor: theme =>
             theme.palette.mode === "light" ? theme.palette.grey[200] : theme.palette.grey[800],
-        }}
-      >
+        }}>
         {displayDesktop()}
       </AppBar>
     </header>

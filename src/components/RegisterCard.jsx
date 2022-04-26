@@ -29,21 +29,24 @@ const useStyles = makeStyles(theme =>
       display: "flex",
       flexWrap: "wrap",
       "& > *": {
-        marginTop: "5%",
+        marginTop: "7%",
         margin: "auto",
         backgroundColor: "#ffffff",
       },
     },
     box: {
       display: "flex",
-      flexWrap: "wrap",
-      "& > :not(style)": {
-        m: 1,
-        width: 800,
-        height: 950,
+      flexDirection: "column",
+      [theme.breakpoints.up("sm")]: {
+        width: "70%",
+      },
+      [theme.breakpoints.up("md")]: {
+        width: "60%",
+      },
+      [theme.breakpoints.up("lg")]: {
+        width: "40%",
       },
       borderColor: "black",
-      marginBottom: "5%",
     },
     icon: {
       marginBottom: "50%",
@@ -70,10 +73,13 @@ const useStyles = makeStyles(theme =>
     },
     loginButton: {
       cursor: "pointer",
+      fontSize: "1.1rem",
     },
     registerBox: {
       textAlign: "center",
       marginRight: "5%",
+      marginBottom: "3%",
+      marginTop: "1%",
     },
   }),
 );
@@ -92,15 +98,15 @@ const RegisterCard = () => {
   }, [success]);
 
   const schema = yup.object().shape({
+    name: yup.string().required("Imię jest wymaganym polem"),
+    surname: yup.string().required("Nazwisko jest wymaganym polem"),
     username: yup.string().required("Nick jest wymaganym polem"),
+    email: yup.string().required("Email jest wymaganym polem"),
     password: yup.string().required("Hasło jest wymaganym polem"),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref("password"), null], "Hasła muszą być zgodne")
       .required("Potwierdzenie hasła jest wymaganym polem"),
-    name: yup.string().required("Imię jest wymaganym polem"),
-    surname: yup.string().required("Nazwisko jest wymaganym polem"),
-    email: yup.string().required("Email jest wymaganym polem"),
   });
 
   const {
@@ -145,6 +151,40 @@ const RegisterCard = () => {
       <Box className={classes.box}>
         <Paper elevation={3}>
           <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+            <FormInput
+              labelTitle="Imię"
+              name="name"
+              control={control}
+              register={register}
+              errors={errors?.name}
+              setValue={setValue}
+              numberRows={1}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FaceIcon className={classes.icon} />
+                  </InputAdornment>
+                ),
+              }}
+              type="text"
+            />
+            <FormInput
+              labelTitle="Nazwisko"
+              name="surname"
+              control={control}
+              register={register}
+              errors={errors?.surname}
+              setValue={setValue}
+              numberRows={1}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PeopleIcon className={classes.icon} />
+                  </InputAdornment>
+                ),
+              }}
+              type="text"
+            />
             <FormInput
               labelTitle="Nick"
               name="username"
@@ -198,8 +238,7 @@ const RegisterCard = () => {
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                      onMouseDown={handleMouseDownPassword}>
                       {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                     </IconButton>
                   </InputAdornment>
@@ -226,48 +265,13 @@ const RegisterCard = () => {
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                      onMouseDown={handleMouseDownPassword}>
                       {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
               type={showPassword ? "text" : "password"}
-            />
-            <FormInput
-              labelTitle="Imię"
-              name="name"
-              control={control}
-              register={register}
-              errors={errors?.name}
-              setValue={setValue}
-              numberRows={1}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <FaceIcon className={classes.icon} />
-                  </InputAdornment>
-                ),
-              }}
-              type="text"
-            />
-            <FormInput
-              labelTitle="Nazwisko"
-              name="surname"
-              control={control}
-              register={register}
-              errors={errors?.surname}
-              setValue={setValue}
-              numberRows={1}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PeopleIcon className={classes.icon} />
-                  </InputAdornment>
-                ),
-              }}
-              type="text"
             />
             <div className={classes.registerBox}>
               <input type="submit" value="Zarejestruj" className={classes.register} />
@@ -290,10 +294,10 @@ const RegisterCard = () => {
             )}
           </form>
         </Paper>
+        <Link className={classes.loginButton} variant="outlined" onClick={handleRedirectClick}>
+          Masz już konto?
+        </Link>
       </Box>
-      {/*<Link className={classes.loginButton} variant="outlined" onClick={handleRedirectClick}>*/}
-      {/*  Zaloguj*/}
-      {/*</Link>*/}
     </div>
   );
 };

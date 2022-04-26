@@ -26,8 +26,7 @@ export const signIn = (username, password) => async dispatch => {
   } catch (error) {
     dispatch({
       type: USER_SIGNIN_FAIL,
-      payload:
-        error.response && error.response.data.message ? error.response.data.message : error.message,
+      payload: error.response && error.response.data ? error.response : error.message,
     });
   }
 };

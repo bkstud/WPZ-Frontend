@@ -5,7 +5,7 @@ import "./App.css";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import AdminRoute from "./shared/AdminRoute";
 import HomeScreen from "./screens/HomeScreen";
-import Temp from "./screens/Temp";
+import Logout from "./screens/Logout";
 import ProtectedTemp from "./screens/ProtectedTemp";
 import AdminTemp from "./screens/AdminTemp";
 import ErrorScreen from "./screens/ErrorScreen";
@@ -13,43 +13,48 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import { ThemeProvider } from "@mui/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 const App = () => {
+  let theme = createTheme();
+  theme = responsiveFontSizes(theme);
   return (
     <BrowserRouter>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<HomeScreen />} />
-          <Route path="/temp" element={<Temp />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/register" element={<RegisterScreen />} />
-          <Route
-            path="/protectedTemp"
-            element={
-              <ProtectedRoute>
-                <ProtectedTemp />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/adminTemp"
-            element={
-              <AdminRoute>
-                <AdminTemp />
-              </AdminRoute>
-            }
-          />
-          <Route path="*" element={<ErrorScreen />} />
-        </Routes>
-        <Footer />
-      </Box>
+      <ThemeProvider theme={theme}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+          }}>
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<HomeScreen />} />
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/register" element={<RegisterScreen />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route
+              path="/protectedTemp"
+              element={
+                <ProtectedRoute>
+                  <ProtectedTemp />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/adminTemp"
+              element={
+                <AdminRoute>
+                  <AdminTemp />
+                </AdminRoute>
+              }
+            />
+            <Route path="*" element={<ErrorScreen />} />
+          </Routes>
+          <Footer />
+        </Box>
+      </ThemeProvider>
     </BrowserRouter>
   );
 };
