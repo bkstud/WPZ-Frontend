@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ProtectedRoute from "./shared/ProtectedRoute";
 import AdminRoute from "./shared/AdminRoute";
 import HomeScreen from "./screens/HomeScreen";
@@ -11,6 +12,7 @@ import AdminTemp from "./screens/AdminTemp";
 import ErrorScreen from "./screens/ErrorScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FaqScreen from "./screens/FaqScreen";
 
 const App = () => {
   return (
@@ -26,6 +28,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<HomeScreen />} />
           <Route path="/temp" element={<Temp />} />
+          <Route path="/about" element={<FaqScreen />} />
           <Route
             path="/protectedTemp"
             element={
