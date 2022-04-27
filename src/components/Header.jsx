@@ -27,7 +27,7 @@ const headersData = isLoggedin => [
 ];
 
 const Header = () => {
-  const isLoggedin = useSelector(state => state.userSignIn.userInfo !== undefined);
+  const isLoggedin = useSelector(state => state.userSignIn.userInfo !== null);
 
   const displayDesktop = () => {
     return (

@@ -32,9 +32,9 @@ export const signIn = (username, password) => async dispatch => {
 };
 
 export const signOut = () => dispatch => {
-  dispatch({ type: USER_SIGNOUT });
-  localStorage.removeItem("userInfo");
+  localStorage.setItem("userInfo", null);
   auth.logout();
+  dispatch({ type: USER_SIGNOUT });
 };
 
 export const signUp = (username, password, name, surname, email) => async dispatch => {
