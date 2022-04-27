@@ -32,7 +32,7 @@ export const signIn = (username, password) => async dispatch => {
 };
 
 export const signOut = () => dispatch => {
-  localStorage.setItem("userInfo", null);
+  localStorage.removeItem("userInfo");
   auth.logout();
   dispatch({ type: USER_SIGNOUT });
 };
