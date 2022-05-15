@@ -10,6 +10,7 @@ import Logout from "./screens/Logout";
 import ProtectedTemp from "./screens/ProtectedTemp";
 import AdminTemp from "./screens/AdminTemp";
 import ErrorScreen from "./screens/ErrorScreen";
+import Tests from "./screens/Tests";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FaqScreen from "./screens/FaqScreen";
@@ -37,6 +38,8 @@ const App = () => {
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/tests" element={<Tests />} />
+
             <Route
               path="/protectedTemp"
               element={
