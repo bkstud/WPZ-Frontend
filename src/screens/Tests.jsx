@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import React, { useEffect, useState } from "react"
-import axios from "axios";
+import http from "../lib/axios";
 import Button from '@mui/material/Button';
 
 
@@ -55,24 +55,13 @@ const Tests = () => {
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("token"));
-        const http = axios.create({
-            baseURL: "http://localhost:3002/api",
+          http.get("/exams", 
+          {
             headers: {
-              "Content-Type": "application/json",
               'Authorization': `Basic ${token}` 
-            },
-            transformRequest: [
-              data => {
-                return JSON.stringify(data);
-              },
-            ],
-            transformResponse: [
-              data => {
-                return JSON.parse(data);
-              },
-            ],
-          });
-          http.get("/exams").then(({data}) => {
+            }
+          }
+          ).then(({data}) => {
             setExams(data)
         });
         
