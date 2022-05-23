@@ -141,7 +141,7 @@ const LoginCard = ({ userInfo }) => {
   };
 
   const handleRedirectClick = () => {
-    return success ? navigate("/register") : "";
+    navigate("/register");
   };
 
   return (

@@ -18,8 +18,8 @@ export const signIn = (username, password) => async dispatch => {
       password,
     });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: user });
-    localStorage.setItem("userInfo", JSON.stringify(user));
-    if (user?.data.token) {
+    if (user?.data?.token !== null) {
+      localStorage.setItem("userInfo", JSON.stringify(user));
       auth.login(user?.data.token);
       document.location.href = "/";
     }
