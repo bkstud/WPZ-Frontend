@@ -15,7 +15,7 @@ export const userSignInReducer = (state = {}, action) => {
     case USER_SIGNIN_SUCCESS:
       return { loading: false, userInfo: action.payload };
     case USER_SIGNIN_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, userInfo: null, error: action.payload };
     case USER_SIGNOUT:
       return { userInfo: null };
     default:
