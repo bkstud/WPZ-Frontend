@@ -139,7 +139,6 @@ const RegisterCard = () => {
   };
 
   const handleClose = (event, reason) => {
-    const temporary = event;
     if (reason === "clickaway") {
       return;
     }

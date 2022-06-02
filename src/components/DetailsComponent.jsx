@@ -35,7 +35,7 @@ export default class DetailsComponent extends Component {
     return (
       <div>
         {content.map((qa, idx) => (
-          <details key={idx} open={idx == this.state.openIdx} onClick={e => this.handleOpenDetails(e, idx)}>
+          <details key={idx} open={idx === this.state.openIdx} onClick={e => this.handleOpenDetails(e, idx)}>
             <summary>{qa.question}</summary>
             <p className="p-3">{qa.answer}</p>
           </details>

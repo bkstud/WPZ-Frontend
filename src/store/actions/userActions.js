@@ -7,7 +7,7 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_FAIL,
 } from "../../constants/userConstants";
-import http from "../../lib/axios";
+import { http } from "../../lib/axios";
 import auth from "../../utils/auth";
 
 export const signIn = (username, password) => async dispatch => {
