@@ -18,6 +18,9 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import { ThemeProvider } from "@mui/styles";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import ExamResults from "./screens/ExamResults";
+import ExamApproach from "./screens/ExamApproach";
+import ExamApproachFinished from "./screens/ExamApproachFinished";
 
 const App = () => {
   let theme = createTheme();
@@ -39,7 +42,10 @@ const App = () => {
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/tests" element={<Tests />} />
-
+            <Route path="/tests/approaches" element={<ExamApproach />} />
+            <Route path="/tests/:examId/approaches/finished" element={<ExamApproachFinished  />} />
+            <Route path="/tests/approaches/results" element={<ExamResults />} />
+            <Route path="/tests/approaches/:approachId/results" element={<ExamResults />} />
             <Route
               path="/protectedTemp"
               element={

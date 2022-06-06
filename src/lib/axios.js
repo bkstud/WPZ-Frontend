@@ -21,4 +21,25 @@ const http = axios.create({
   ],
 });
 
-export default http;
+const httpProtected = (token) => axios.create({
+  baseURL: URL + "/api",
+  headers: {
+    "Content-Type": "application/json",
+    'Authorization': `Basic ${token}`,
+  },
+  transformRequest: [
+    data => {
+      return JSON.stringify(data);
+    },
+  ],
+  transformResponse: [
+    data => {
+      return JSON.parse(data);
+    },
+  ],
+});
+
+export {
+  http,
+  httpProtected
+};
