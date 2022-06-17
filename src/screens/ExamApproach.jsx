@@ -73,10 +73,11 @@ const parseOptions = (array) => {
 
 const ExamApproach = () => {
     const exam = useSelector(state => state.exam);
-    const [questionNr, setQuestionNr] = useState(0)
     const classes = useStyles();
     const navigate = useNavigate();
     const questions = exam.approachData.questions
+    const [questionNr, setQuestionNr] = useState(questions.findIndex(x => !x["chosen_options"]?.length))
+
     console.log(questions[questionNr])
 
     const answerQuestion = async data => {
